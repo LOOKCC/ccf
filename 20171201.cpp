@@ -1,4 +1,4 @@
-#include<iosteram>
+#include<iostream>
 using namespace std;
 int main(){
     int n;
@@ -16,6 +16,6 @@ int main(){
                 small = x[i] - x[j];
         }
     }
-    cout<<small;
+    cout<<small<<endl;
     return 0;
 }
