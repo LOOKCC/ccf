@@ -4,12 +4,10 @@ int cal(int n, int x[]){
     int count = 0;
     for(int i=0; i<n; i++){
         count += x[i];
+        if(count > 1)
+            return 0;
     }
-    if(count == 1){
-        return 1;
-    }else{
-        return 0;
-    }
+    return 1;
 }
 
 int main(){
@@ -36,7 +34,7 @@ int main(){
     }
     for(int i=0; i<n; i++){
         if(flag[i] == 1)
-            count<<people[i]<<endl;
+            cout<<people[i]<<endl;
     }
     return 0;
 }
