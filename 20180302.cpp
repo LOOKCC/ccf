@@ -6,30 +6,27 @@ int main(){
     int position[n];
     int direction[n]; //direction 1 is ringht 0 is left
     for(int i=0; i<n; i++){
-        cin>>position[n];
+        cin>>position[i];
         direction[i] = 1;
     }
     for(int i=0; i<t; i++){
-        for(int j = 0; j<n; j++){
-             if(direction[i] == 1){
-                if(position[i+1] == position[i] && direction[i] == 1 && direction[i+1] == 0){
-                    direction[i] = 0;
-                    direction[i+1] = 1;
-                }
-            }
-            else{
-                if(position[i-1] == position[i] && direction[i] == 0 && direction[i+1] == 1){
-                    direction[i] = 1;
-                    direction[i+1] = 0;
-                }
-
-            }
-        }
         for(int j=0; j<n; j++){
-            if(direction[i] == 1)
-                position[i] += 1;
+            if(direction[j] == 1)
+                position[j] += 1;
             else
-                position[i] += -1; 
+                position[j] += -1; 
+            if(position[j] == l)
+                direction[j] = 0;
+             if(position[j] == 0)
+                direction[j] = 1;
+        }
+        for(int j = 0; j<n; j++){
+            for(int k=j+1; k<n; k++){
+                if(position[j] == position[k]){
+                    direction[j] = 1-direction[j];
+                    direction[k] = 1-direction[k];
+                }
+            }   
         }
     }
     for(int i=0; i<n-1; i++){

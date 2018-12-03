@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include<set>
+#include<ctype.h>
 using namespace std;
 
 string erase_point(string x){
@@ -24,7 +25,12 @@ vector<int> process1(string title, vector<string> info){
         string sub = erase_point(info[i]);
         if(sub.find(' ') != string::npos)
             sub =  sub.substr(0, sub.find_first_of(' ')); 
-        if(sub == title){
+        int flag = 1;
+        for(int i=0; i<sub.length(); i++){
+            if(tolower(sub[i]) != tolower(title[i]))
+                flag = 0;
+        }
+        if(flag == 1){
             reslut.push_back(i+1);
         }
     }
