@@ -1,5 +1,7 @@
 #include<iostream>
 #include<vector>
+#include <stdio.h>
+#include <string.h>
 using namespace std;
 int flag[1005][1005];
 int visit[1005];
@@ -31,12 +33,13 @@ int main(){
     }
     
     for(int i=1; i<n+1; i++){
-        menset(visit, 0, sizeof(visit));
+        memset(visit, 0, sizeof(visit));
         dfs(i,i);
     }
     int count = 0;
     for(int i=1; i<n+1; i++){
-        for(int j=1; j<n+1; j++){
+        int j;
+        for(j=1; j<n+1; j++){
             if(!flag[i][j] || !flag[j][i])
                 break;
         }
