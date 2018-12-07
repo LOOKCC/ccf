@@ -17,10 +17,7 @@ void dfs(int a, int t ){
 }
 int main(){
     int n,m;
-    cin>>m>>n;
-    for(int i=0; i<=n; i++){
-        V[i].clear();
-    }
+    cin>>n>>m;
     for(int i=1; i<n+1; i++){
         for(int j=1; j<n+1; j++){
             flag[i][j] = 0;
