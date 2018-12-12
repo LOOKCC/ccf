@@ -1,1 +1,0 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/testss.dir/20170301.cpp.o  -o testss 

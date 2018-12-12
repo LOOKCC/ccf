@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/wzh/code/ccf/build",
-  "command": "/usr/bin/c++    -g   -o CMakeFiles/testss.dir/20170301.cpp.o -c /home/wzh/code/ccf/20170301.cpp",
-  "file": "/home/wzh/code/ccf/20170301.cpp"
-}
-]
