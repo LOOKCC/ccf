@@ -13,43 +13,9 @@ string process(vector<string> rule, string addr){
     for(int i=0; i<rule.size(); i++){
         string name = rule.substr(rule.find_first_of(' ')+1, rule.length()-rule.find_first_of(' ')-1);
         string rule_str = rule.substr(0, rule.find_first_of(' '));
-        int first = 0;
-        string temp_addr = addr;
+        vector<string> rule_vector, addr_vector;
         while(rule_str.length() > 0){
-            if(rule_str.find_first_of("<int>") != string::npos){
-                int x = rule_str.find_first_of("<int>");
-                if(first == 0){
-                    if(rule_str.substr(0, x) == temp_addr.substr(0, x)){
-                        temp_addr = temp_addr.substr(x+1, temp_addr.length()-x-1);
-                        if()
-                    }
-                    first = 1;
-                }
-                else
-                {
-                    
-                }
-                rule_str = 
-                addr = 
-            }
-            if(rule_str.find_first_of("<int>") != string::npos){
-                if(first == 0){
-
-                }
-                else
-                {
-                    
-                }    
-            }
-            if(rule_str.find_first_of("<int>") != string::npos){
-                if(first == 0){
-
-                }
-                else
-                {
-                    
-                }
-            }
+            
         }
 
     }
