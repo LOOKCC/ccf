@@ -15,13 +15,22 @@ int find_next_end(string info, int now){
     return -1;
 }
 string delete_neg(string x){
-
+    string result;
+    for(int i=0; i<x.length(); i++){
+        if(x[i] == '\\'){
+            result += x[i+1];
+            i++;
+        }else{
+            result += x[i];
+        }
+    }
+    return result;
 }
 string process(string info, string relu){
     if(relu.find('.') != string::npos){
         string pre = relu.substr(0, relu.find_first_of('.'));
         if(info.find(pre) == string::npos){
-            return "NOTEXIT";
+            return "NOTEXIST";
         }
         string after = relu.substr(relu.find_first_of('.')+1, relu.length()-relu.find_first_of('.')-1);
         int pos = info.find(pre)+pre.length()+3;
@@ -33,7 +42,7 @@ string process(string info, string relu){
         return process(this_object, after);
     }else{
         if(info.find(relu) == string::npos){
-            return "NOTEXIT";
+            return "NOTEXIST";
         }
         int pos = info.find(relu);
         // cout<<info[pos+relu.length()+3]<<endl;
@@ -60,7 +69,7 @@ int main(){
     for(int i=0; i<m; i++){
         string temp;
         getline(cin, temp);
-        info += temp;
+        info += delete_neg(temp);
     }
     for(int i=0; i<n; i++){
         string temp;
@@ -69,7 +78,7 @@ int main(){
     }
     for(int i=0; i<relu.size(); i++){
         string res = process(info, relu[i]);
-        if(res == "NOTEXIT")
+        if(res == "NOTEXIST")
             cout<<res<<endl;
         else if(res == "OBJECT")
             cout<<res<<endl;
