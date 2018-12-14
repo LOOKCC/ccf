@@ -24,7 +24,21 @@ string delete_neg(string x){
             result += x[i];
         }
     }
-    return result;
+    int flag = 0;
+    string result_2;
+    for(int i=0; i<result.length(); i++){
+        if(result[i] == '\"' && flag == 0){
+            flag = 1;
+        }
+        if(result[i] == '\"' && flag == 1){
+            flag = 0;
+        }
+        if(flag == 0 && result[i] == ' '){
+            continue;
+        }
+        result_2 += result[i];
+    }
+    return result_2;
 }
 string process(string info, string relu){
     if(relu.find('.') != string::npos){

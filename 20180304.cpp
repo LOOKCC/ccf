@@ -1,10 +1,10 @@
 #include<iostream>
 #include<vector>
-
+using namespace std;
 struct point
 {
-    int x,
-    int y
+    int x;
+    int y;
 };
 
 int count_XO(int x[3][3]){

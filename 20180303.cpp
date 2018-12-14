@@ -11,7 +11,12 @@ bool is_number(string x){
     }
     return true;
 }
-
+string delete_0(string x){
+    if(x[0] == '0')
+        return delete_0(x.substr(1, x.length()-1));
+    else
+        return x;
+}
 vector<string> process(vector<string> rule, string addr){
     vector<string> result; 
     for(int i=0; i<rule.size(); i++){
@@ -53,7 +58,7 @@ vector<string> process(vector<string> rule, string addr){
                     flag = 0;
                     break;
                 }else{
-                    result.push_back(addr_vector[j]);
+                    result.push_back(delete_0(addr_vector[j]));
                 }
             }else if(rule_vector[j] == "<str>"){
                 if(addr_vector[j].length() <= 0){
