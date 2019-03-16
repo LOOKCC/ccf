@@ -1,46 +1,60 @@
 #include<iostream>
-#include<algorithm>
+#include<vector>
+#include<queue>
 using namespace std;
-struct edge{
-    int from;
+
+const int maxn = 1005;
+const int maxm = 10005;
+const int maxw = 100005;
+
+struct edge
+{
     int to;
     int weight;
-    friend bool operator < (const edge a, const edge b){
-        return a.weight < b.weight;
+    bool operator<(const edge e)const{
+        return weight > e.weight;
     }
 };
-const int maxn = 1005;
-const int maxm = 1005;
-const int maxw = 1000005;
-int n,m;
-int flag[maxn];
-edge edges[maxm];
-int get_root(int x){
-    if(flag[x] == x)
-        return x;
-    else
-        return flag[x] = get_root(flag[x]);
-}
-int main(){
-    cin>>n>>m;
-    for(int i=0; i<m; i++){
-        cin>>edges[i].from>>edges[i].to>>edges[i].weight;
+
+int n;
+int visited[maxn];
+vector<edge> edges[maxn];
+priority_queue<edge> q;
+
+void prim(int start){
+    int num = 0;
+    visited[start] = 1;
+    num++;
+    for(int i=0; i<edges[start].size(); i++){
+        q.push(edges[start][i]);    
     }
-    for(int i=0; i<=n; i++){
-        flag[i] = i;
-    }
-    sort(edges, edges+m);
-    for(int i=0; i<m; i++){
-        int x = get_root(edges[i].from);
-        int y = get_root(edges[i].to);
-        if(x!=y){
-            if(x < y)
-                flag[y] = x;
-            else
-                flag[x] = y;
+    while(num != n){
+        edge temp;
+        temp = q.top();
+        q.pop();
+        int v = temp.to;
+        if(visited[v] == 1)
+            continue;
+        visited[v] = 1;
+        num++;
+        for(int i=0; i<edges[v].size(); i++){
+            if(!visited[edges[v][i].to])
+                q.push(edges[v][i]);    
         }
-        if(get_root(n) == 1) break;
     }
-    //do something you want
+}
+
+int main(){
+    cin>>n;
+    int m;
+    cin>>m;
+    for(int i=0; i<m; i++){
+        edge temp;
+        int from;
+        cin>>from>>temp.to>>temp.weight;
+        edges[from].push_back(temp);
+    }
+    prim(1);
+    //cout  
     return 0;
 }
